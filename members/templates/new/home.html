@@ -1,6 +1,6 @@
 {% extends "new/base.html" %}
 {% block content %}
-    <article class="media content-section"style="width:900px">
+   
         <div class="media-body">
             <div class="article-metadata">
                 <h4><a href="{% url 'iit-list'%}">View Institute wise cut-off</a></h4>
@@ -10,8 +10,18 @@
                 </p>
             </div>
         </div>
-    </article>
-    <article class="media content-section"style="width:900px">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h4><a href="{% url 'josaa-input'%}">College prdictor</a></h4>
+            </div>
+            <div class="media-content">
+                <p>Here we give a brief pediction  based on your  rank  of JEE ADVANCED which help you to know what branch and college suitable on your rank
+                </p>
+            </div>
+        </div>
+    
+   
+   
         <div class="media-body" >
             <div class="article-metadata">
                 <h4><a href="{% url 'insti_cutoff'%}">Analyzing Every institute cut-off by category and gender</a></h4>
@@ -21,8 +31,8 @@
                 </p>
             </div>
         </div>
-    </article>
-    <article class="media content-section"style="width:900px">
+
+    
         <div class="media-body">
             <div class="article-metadata">
                 <h4><a href="{% url 'iitb' college='Indian Institute of Technology Bombay'%}">Roundwise cut-off Analysis</a></h4>
@@ -34,6 +44,7 @@
                 </p>
             </div>
         </div>    
-    </article>
+    
+</article>
 
 {% endblock content %}

@@ -17,6 +17,7 @@ ul {
     background-color: #b230b2;
 }
 
+
 .site-header .navbar-nav .nav-link {
     padding-left: 90px;
     padding-right: 30px;
@@ -74,7 +75,7 @@ a.article-title:hover {
 }
 
 .article-metadata a:hover {
-    color: #381f1f;
+    color: #ae5123;
     text-decoration: none;
 }
 
