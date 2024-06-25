@@ -64,6 +64,8 @@
             let openingRank = adm.opening_rank;
             let gender = adm.gender;
             let Year = adm.year;
+            let round1=adm.round;
+            console.log(Year);
             let category = adm.seat_type;
 
             if (rank <= closingRank && selectedGender === gender && catg === category) {
@@ -75,6 +77,7 @@
                 let cell5 = row.insertCell(4);
                 let cell6 = row.insertCell(5);
                 let cell7 = row.insertCell(6);
+                let cell8 = row.insertCell(7);
 
                 cell1.innerHTML = adm.institute;
                 cell2.innerHTML = adm.academic_program_name;
@@ -83,6 +86,7 @@
                 cell5.innerHTML = gender;
                 cell6.innerHTML = Year;
                 cell7.innerHTML = category;
+                cell8.innerHTML = round1;
             }
         }
     }
@@ -131,6 +135,7 @@
                 <th>Gender</th>
                 <th>Year</th>
                 <th>category</th>
+                <th>round</th>
             </tr>
         </thead>
         <tbody>

@@ -11,6 +11,7 @@ urlpatterns = [
     path('iitList/', views.iitList,name='iit-list'),
     # path('iitb/',views.iitb,name='iitb'),
     path('iitb/<str:college>/', views.iitb, name='iitb'),
+    path('iitbranch', views.iitbranch, name='iitbranch'),
     path('iitmech/<str:college>/', views.iitmech, name='iitmech'),
     
     path('insti_cutoff/', views.insti_cutoff, name='insti_cutoff'),

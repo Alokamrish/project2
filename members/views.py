@@ -19,18 +19,9 @@ def input1(request):
 
     admissions_data = []
     for year in years:
-        # Get the maximum round number for the current year
-        max_round = (
-            Admission.objects.filter(year=year['year'])
-            .order_by('-round')
-            .values('round')
-            .first()
-        )
-
-        if max_round is not None:
-            # Get the rows with the maximum round number for the current year
-            rows = Admission.objects.filter(year=year['year'], round=max_round['round'])
-            admissions_data.extend(rows)
+     # Get the rows with the maximum round number for the current year
+        rows = Admission.objects.filter(year=year['year'])
+        admissions_data.extend(rows)
 
     serialized_data = serializers.serialize('json', admissions_data)
 
@@ -49,20 +40,14 @@ def contact1(request):
 def iitList(request):
     return render(request,'new/iitList.html',context_iit)
 
-def iitb(request, college):
-    data = Admission.objects.filter(institute=college)  # Filter data based on the college parameter
-    serialized_data = serializers.serialize('json', data)
-    context = {
-        'data': serialized_data,
-        'institute_name': college
-    }
-    return render(request, "new/iitb.html", context)
+
+
 def iitmech(request, college):
     data = Admission.objects.filter(institute=college)  # Filter data based on the college parameter
     serialized_data = serializers.serialize('json', data)
     context = {
         'data': serialized_data,
-        'institute_name': college
+         'institute_name': college
     }
     return render(request, "new/iitmech.html", context)
 
@@ -93,7 +78,39 @@ def insti_cutoff(request):
     }
 
     return render(request, "new/insti_cutoff.html", context)
+def iitbranch(request):
+    years = Admission.objects.values('year').distinct()
 
+    admissions_data = []
+    for year in years:
+        # Get the maximum round
+            rows = Admission.objects.filter(year=year['year'])
+            admissions_data.extend(rows)
+
+    serialized_data = serializers.serialize('json', admissions_data)
+
+    context = {
+        'admissions_data': serialized_data,
+    }
+    
+    return render(request, "new/branchrank.html", context)
+def iitb(request,college):
+    years = Admission.objects.values('year').distinct()
+
+    data = []
+    for year in years:
+        # Get the maximum round
+            rows = Admission.objects.filter(year=year['year'],institute=college)
+            data.extend(rows)
+
+    serialized_data = serializers.serialize('json',data)
+
+    context = {
+        'data': serialized_data,
+        'institute_name': college
+    }
+    
+    return render(request, "new/iitb.html", context)
 
 
 

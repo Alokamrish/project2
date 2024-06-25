@@ -16,8 +16,10 @@
     function changeYear(year) {
         document.getElementById("yearDropdown").innerText = year;
         selectedYear = year;
+    
         updateOpeningRanks();
     }
+    console.log(selectedYear + "bura")
 
     function changeCategory(category) {
         document.getElementById("categoryDropdown").innerText = category;
@@ -44,7 +46,7 @@
         updateOpeningRanks();
     }
 
-    var data = JSON.parse('{{ data|escapejs }}');
+    var data = JSON.parse('{{admissions_data|escapejs }}');
     for (let i = 0; i < data.length; i++) {
         let adm = data[i].fields;
         let academicProgramName = adm.academic_program_name;
@@ -64,18 +66,16 @@
         openingRanks = [];
         openingRanksFemale = [];
         openingRanksOther = [];
-
+      
         data.forEach((adm) => {
             let admFields = adm.fields;
             let branch = admFields.academic_program_name.split('(')[0].trim();
             let gender = admFields.gender;
             let openingRank = admFields.opening_rank;
-
             if (
-                admFields.year === selectedYear &&
-                admFields.seat_type === selectedCategory &&
-                admFields.round === selectedRound
-            ) {
+               admFields.year === selectedYear &&admFields.seat_type === selectedCategory &&  admFields.round === selectedRound
+            ) { 
+            
                 openingRanks.push(openingRank);
 
                 if (gender === 'Female-only (including Supernumerary)') {
